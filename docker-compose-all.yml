@@ -11,7 +11,7 @@ services:
       - '-stats=false'
       - '-stratum=:5555'
       - '-prom=:2114'
-      - '-kobrad=host.docker.internal:19110'
+      - '-kobrad=host.docker.internal:44448'
     ports:
       - 5555:5555
       - 2114:2114
