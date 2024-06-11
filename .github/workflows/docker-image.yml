@@ -40,5 +40,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: kobradpyi/pyipad-stratum-bridge:latest
+          tags: kobradag/kobrad-stratum-bridge:latest
 
