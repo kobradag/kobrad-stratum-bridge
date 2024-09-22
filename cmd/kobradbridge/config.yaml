@@ -1,8 +1,8 @@
 # stratum_listen_port: the port that will be listening for incoming stratum traffic
 # Note `:PORT` format is needed if not specifiying a specific ip range
-stratum_port: put here your ip local:5555
+stratum_port: put here your ip local:7777
 
-# kobrad_address: address/port of the rpc server for kobrad, typically 19110
+# kobrad_address: address/port of the rpc server for kobrad, typically 44448
 # For a list of public nodes, run `nslookup mainnet-dnsseed.daglabs-dev.com`
 # uncomment for to use a public node
 kobrad_address: localhost:44448
