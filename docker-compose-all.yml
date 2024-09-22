@@ -9,7 +9,7 @@ services:
     command:
       - '-log=true'
       - '-stats=false'
-      - '-stratum=:5555'
+      - '-stratum=:7777'
       - '-prom=:2114'
       - '-kobrad=host.docker.internal:44448'
     ports:
