@@ -27,9 +27,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	flag.StringVar(&cfg.StratumPort, "stratum", cfg.StratumPort, "stratum port to listen on, default `:5555`")
+	flag.StringVar(&cfg.StratumPort, "stratum", cfg.StratumPort, "stratum port to listen on, default `:7777`")
 	flag.BoolVar(&cfg.PrintStats, "stats", cfg.PrintStats, "true to show periodic stats to console, default `true`")
-	flag.StringVar(&cfg.RPCServer, "kobrad", cfg.RPCServer, "address of the kobrad node, default `localhost:19110`")
+	flag.StringVar(&cfg.RPCServer, "kobrad", cfg.RPCServer, "address of the kobrad node, default `localhost:44448`")
 	flag.DurationVar(&cfg.BlockWaitTime, "blockwait", cfg.BlockWaitTime, "time in ms to wait before manually requesting new block, default `500`")
 	flag.UintVar(&cfg.MinShareDiff, "mindiff", cfg.MinShareDiff, "minimum share difficulty to accept from miner(s), default `4`")
 	flag.UintVar(&cfg.ExtranonceSize, "extranonce", cfg.ExtranonceSize, "size in bytes of extranonce, default `0`")
@@ -42,7 +42,7 @@ func main() {
 		cfg.MinShareDiff = 4
 	}
 	if cfg.BlockWaitTime == 0 {
-		cfg.BlockWaitTime = 5 * time.Second // this should never happen due to pyi 1s block times
+		cfg.BlockWaitTime = 5 * time.Second // this should never happen due to kobra 1s block times
 	}
 
 	log.Println("----------------------------------")
