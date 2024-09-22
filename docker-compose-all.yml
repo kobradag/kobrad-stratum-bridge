@@ -13,7 +13,7 @@ services:
       - '-prom=:2114'
       - '-kobrad=host.docker.internal:44448'
     ports:
-      - 5555:5555
+      - 7777:7777
       - 2114:2114
     extra_hosts:
       - host.docker.internal:host-gateway
