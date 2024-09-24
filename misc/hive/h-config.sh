@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-MINER_CONFIG="$MINER_DIR/$MINER_NAME/py_bridge.conf"
+MINER_CONFIG="$MINER_DIR/$MINER_NAME/kobrad_bridge.conf"
 mkfile_from_symlink $MINER_CONFIG
 
 
