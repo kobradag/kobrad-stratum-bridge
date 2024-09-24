@@ -1,3 +1,4 @@
+
 package gostratum
 
 import (
@@ -34,7 +35,7 @@ func DefaultConfig(logger *zap.Logger) StratumListenerConfig {
 	return StratumListenerConfig{
 		StateGenerator: func() any { return nil },
 		HandlerMap:     DefaultHandlers(),
-		Port:           ":5555",
+		Port:           ":7777",
 		Logger:         logger,
 	}
 }
@@ -112,27 +113,32 @@ func SendExtranonce(ctx *StratumContext) {
 }
 
 var walletRegex = regexp.MustCompile("kobra:[a-z0-9]+")
-var testnetWalletRegex = regexp.MustCompile("kobratest:[a-z0-9]+")
+var testnetWalletRegex = regexp.MustCompile("pyrintest:[a-z0-9]+")
+
 func CleanWallet(in string) (string, error) {
-		testnet := strings.HasPrefix(in, "pyrintest:")
+	testnet := strings.HasPrefix(in, "pyrintest:")
 	prefix := util.Bech32PrefixPyrin
+
 	if testnet {
-		prefix = util.Bech32PrefixKobraTest
+		prefix = util.Bech32PrefixPyrinTest
 	}
+
 	_, err := util.DecodeAddress(in, prefix)
-	_, err := util.DecodeAddress(in, util.Bech32PrefixPyrin)
 	if err == nil {
 		return in, nil // good to go
 	}
-	if !strings.HasPrefix(in, "kobra:") && !strings.HasPrefix(in, "kobratest:") {
+	if !strings.HasPrefix(in, "kobra:") && !strings.HasPrefix(in, "pyrintest:") {
+		return CleanWallet("kobra:" + in)
 	}
 
-	// has kobra: prefix but other weirdness somewhere
+	// has pyrin: prefix but other weirdness somewhere
 	if walletRegex.MatchString(in) {
 		return in[0:67], nil
 	}
-		if testnetWalletRegex.MatchString(in) {
+
+	if testnetWalletRegex.MatchString(in) {
 		return in[0:71], nil
 	}
-	return "", errors.New("unable to coerce wallet to valid kobrad address")
+
+	return "", errors.New("unable to coerce wallet to valid pyrin address")
 }
