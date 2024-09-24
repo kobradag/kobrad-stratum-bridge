@@ -1,9 +1,9 @@
 volumes:
   prometheus_data: {}
 services:
-  py_bridge:
+  kobrad_bridge:
     image: kobradag/kobrad-stratum-bridge:latest
-    container_name: py_bridge
+    container_name: kobrad_bridge
     restart: unless-stopped
     user: "0"
     command:
