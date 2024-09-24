@@ -22,4 +22,4 @@ scrape_configs:
          # metrics_path defaults to '/metrics'
          # scheme defaults to 'http'.
     static_configs:
-      - targets: ['py_bridge:2114']
+      - targets: ['kobrad_bridge:2114']
