@@ -112,19 +112,27 @@ func SendExtranonce(ctx *StratumContext) {
 }
 
 var walletRegex = regexp.MustCompile("kobra:[a-z0-9]+")
-
+var testnetWalletRegex = regexp.MustCompile("kobratest:[a-z0-9]+")
 func CleanWallet(in string) (string, error) {
+		testnet := strings.HasPrefix(in, "pyrintest:")
+	prefix := util.Bech32PrefixPyrin
+	if testnet {
+		prefix = util.Bech32PrefixKobraTest
+	}
+	_, err := util.DecodeAddress(in, prefix)
 	_, err := util.DecodeAddress(in, util.Bech32PrefixPyrin)
 	if err == nil {
 		return in, nil // good to go
 	}
-	if !strings.HasPrefix(in, "kobra:") {
-		return CleanWallet("kobra:" + in)
+	if !strings.HasPrefix(in, "kobra:") && !strings.HasPrefix(in, "kobratest:") {
 	}
 
 	// has kobra: prefix but other weirdness somewhere
 	if walletRegex.MatchString(in) {
 		return in[0:67], nil
+	}
+		if testnetWalletRegex.MatchString(in) {
+		return in[0:71], nil
 	}
 	return "", errors.New("unable to coerce wallet to valid kobrad address")
 }
