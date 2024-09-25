@@ -9,11 +9,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Pyrinpyi/pyipad/app/appmessage"
-	"github.com/Pyrinpyi/pyipad/domain/consensus/model/externalapi"
-	"github.com/Pyrinpyi/pyipad/domain/consensus/utils/consensushashing"
-	"github.com/Pyrinpyi/pyipad/domain/consensus/utils/pow"
-	"github.com/Pyrinpyi/pyipad/infrastructure/network/rpcclient"
+	"github.com/kobradag/kobrad/app/appmessage"
+	"github.com/kobradag/kobrad/domain/consensus/model/externalapi"
+	"github.com/kobradag/kobrad/domain/consensus/utils/consensushashing"
+	"github.com/kobradag/kobrad/domain/consensus/utils/pow"
+	"github.com/kobradag/kobrad/infrastructure/network/rpcclient"
 	"github.com/kobradag/kobrad-stratum-bride/src/gostratum"
 	"github.com/pkg/errors"
 	"go.uber.org/atomic"
@@ -272,7 +272,7 @@ func (sh *shareHandler) startStatsThread() error {
 	start := time.Now()
 	for {
 		// console formatting is terrible. Good luck whever touches anything
-		time.Sleep(10 * time.Second)
+		time.Sleep(30 * time.Second)
 		sh.statsLock.Lock()
 		str := "\n===============================================================================\n"
 		str += "  worker name   |  avg hashrate  |   acc/stl/inv  |    blocks    |    uptime   \n"
@@ -294,7 +294,7 @@ func (sh *shareHandler) startStatsThread() error {
 		str += "\n-------------------------------------------------------------------------------\n"
 		str += fmt.Sprintf("                | %14.14s | %14.14s | %12d | %11s",
 			rateStr, ratioStr, sh.overall.BlocksFound.Load(), time.Since(start).Round(time.Second))
-		str += "\n========================================================== kobradag_bridge_" + version + " ===\n"
+		str += "\n========================================================== kobrad_bridge_" + version + " ===\n"
 		sh.statsLock.Unlock()
 		log.Println(str)
 	}

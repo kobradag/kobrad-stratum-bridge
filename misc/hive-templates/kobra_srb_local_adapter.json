@@ -2,7 +2,7 @@
     "isFavorite": false,
     "items": [
         {
-            "coin": "PYI",
+            "coin": "KOBRA",
             "pool_ssl": false,
             "dpool_ssl": false,
             "miner": "srbminer",
@@ -15,7 +15,7 @@
             "pool_geo": []
         },
         {
-            "coin": "PYI",
+            "coin": "KOBRA",
             "pool_ssl": false,
             "dpool_ssl": false,
             "miner": "custom",
@@ -24,7 +24,7 @@
                 "url": "YOUR_PYIPAD_NODE_IP_HERE:44448",
                 "miner": "py_bridge",
                 "template": "doesnt.matter",
-                "install_url": "https://github.com/Pyrinpyi/pyipad-stratum-bridge/releases/download/v0.13.4/py_bridge-0.13.4_hive.tar.gz"
+                "install_url": "https://github.com/kobradag/kobrad-stratum-bridge/releases/download/v1.0.4/kobrad_bridge-1.0.0_hive.tar.gz"
             },
             "pool_geo": []
         }

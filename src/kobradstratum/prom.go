@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/Pyrinpyi/pyipad/app/appmessage"
+	"github.com/kobradag/kobrad/app/appmessage"
 	"github.com/kobradag/kobrad-stratum-bride/src/gostratum"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"

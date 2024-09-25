@@ -10,7 +10,7 @@ import (
 	"lukechampine.com/blake3"
 	"math/big"
 
-	"github.com/Pyrinpyi/pyipad/app/appmessage"
+	"github.com/kobradag/kobrad/app/appmessage"
 )
 
 // static value definitions to avoid overhead in diff translations

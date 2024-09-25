@@ -3,17 +3,16 @@ module github.com/kobradag/kobrad-stratum-bride
 go 1.18
 
 require (
-	github.com/Pyrinpyi/pyipad v1.1.0
 	github.com/google/go-cmp v0.5.9
 	github.com/google/uuid v1.3.1
+	github.com/kobradag/kobrad v1.2.1
 	github.com/mattn/go-colorable v0.1.13
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.13.0
 	go.uber.org/atomic v1.7.0
 	go.uber.org/zap v1.23.0
-	golang.org/x/crypto v0.17.0
 	gopkg.in/yaml.v2 v2.4.0
-        lukechampine.com/blake3 v1.2.1
+	lukechampine.com/blake3 v1.2.1
 )
 
 require (
@@ -35,6 +34,6 @@ require (
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20231212172506-995d672761c0 // indirect
 	google.golang.org/grpc v1.60.1 // indirect
-	google.golang.org/protobuf v1.32.0 // indirect
+	google.golang.org/protobuf v1.33.0 // indirect
 
 )

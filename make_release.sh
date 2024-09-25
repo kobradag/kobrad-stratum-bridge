@@ -2,7 +2,7 @@ CMD_PATH="../cmd/kobradbridge"
 rm -rf release
 mkdir -p release
 cd release
-VERSION=0.14.5
+VERSION=1.0.0
 ARCHIVE="kobrad_bridge-${VERSION}"
 OUTFILE="kobrad_bridge"
 OUTDIR="kobrad_bridge"

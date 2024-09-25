@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Pyrinpyi/pyipad/app/appmessage"
-	"github.com/Pyrinpyi/pyipad/infrastructure/network/rpcclient"
+	"github.com/kobradag/kobrad/app/appmessage"
+	"github.com/kobradag/kobrad/infrastructure/network/rpcclient"
 	"github.com/kobradag/kobrad-stratum-bride/src/gostratum"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"
@@ -89,7 +89,7 @@ func (s *KobraApi) waitForSync(verbose bool) error {
 		if clientInfo.IsSynced {
 			break
 		}
-		s.logger.Warn("Pyrin is not synced, waiting for sync before starting bridge")
+		s.logger.Warn("Kobra is not synced, waiting for sync before starting bridge")
 		time.Sleep(5 * time.Second)
 	}
 	if verbose {
@@ -132,7 +132,7 @@ func (s *KobraApi) startBlockTemplateListener(ctx context.Context, blockReadyCb 
 func (py *KobraApi) GetBlockTemplate(
 	client *gostratum.StratumContext) (*appmessage.GetBlockTemplateResponseMessage, error) {
 	template, err := py.kobrad.GetBlockTemplate(client.WalletAddr,
-		fmt.Sprintf(`'%s' via Pyrinpyi/kobrad-stratum-bridge_%s`, client.RemoteApp, version))
+		fmt.Sprintf(`'%s' via kobradag/kobrad-stratum-bridge_%s`, client.RemoteApp, version))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed fetching new block template from kobrad")
 	}

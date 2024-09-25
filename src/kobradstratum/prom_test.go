@@ -3,7 +3,7 @@ package kobradstratum
 import (
 	"testing"
 
-	"github.com/Pyrinpyi/pyipad/app/appmessage"
+	"github.com/kobradag/kobrad/app/appmessage"
 	"github.com/kobradag/kobrad-stratum-bride/src/gostratum"
 )
 

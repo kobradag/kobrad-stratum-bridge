@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Pyrinpyi/pyipad/app/appmessage"
-	"github.com/Pyrinpyi/pyipad/util/difficulty"
+	"github.com/kobradag/kobrad/app/appmessage"
+	"github.com/kobradag/kobrad/util/difficulty"
 	"github.com/google/go-cmp/cmp"
 )
 
