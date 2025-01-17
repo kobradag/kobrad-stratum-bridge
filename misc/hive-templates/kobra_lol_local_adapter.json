@@ -2,29 +2,29 @@
     "isFavorite": false,
     "items": [
         {
-            "coin": "PYI",
+            "coin": "KOBRA",
             "pool_ssl": false,
             "dpool_ssl": false,
             "miner": "lolminer",
             "miner_config": {
                 "url": "127.0.0.1:5555",
-                "algo": "PYRIN",
+                "algo": "KODA",
                 "worker": "%WORKER_NAME%",
                 "user_config": "--disable-cpu"
             },
             "pool_geo": []
         },
         {
-            "coin": "PYI",
+            "coin": "KOBRA",
             "pool_ssl": false,
             "dpool_ssl": false,
             "miner": "custom",
-            "miner_alt": "py_bridge",
+            "miner_alt": "kobra_bridge",
             "miner_config": {
                 "url": "YOUR_KOBRAD_NODE_IP_HERE:44448",
-                "miner": "py_bridge",
+                "miner": "kobra_bridge",
                 "template": "doesnt.matter",
-                "install_url": "https://github.com/kobradag/kobrad-stratum-bridge/releases/download/v0.13.4/py_bridge-0.13.4_hive.tar.gz"
+                "install_url": "https://github.com/kobradag/kobrad-stratum-bridge/releases/download/"
             },
             "pool_geo": []
         }
