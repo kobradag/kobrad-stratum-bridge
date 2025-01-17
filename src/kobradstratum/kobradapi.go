@@ -35,28 +35,28 @@ func NewKobraAPI(address string, blockWaitTime time.Duration, logger *zap.Sugare
 	}, nil
 }
 
-func (py *KobraApi) Start(ctx context.Context, blockCb func()) {
-	py.waitForSync(true)
-	go py.startBlockTemplateListener(ctx, blockCb)
-	go py.startStatsThread(ctx)
+func (kobra *KobraApi) Start(ctx context.Context, blockCb func()) {
+	kobra.waitForSync(true)
+	go kobra.startBlockTemplateListener(ctx, blockCb)
+	go kobra.startStatsThread(ctx)
 }
 
-func (py *KobraApi) startStatsThread(ctx context.Context) {
+func (kobra *KobraApi) startStatsThread(ctx context.Context) {
 	ticker := time.NewTicker(30 * time.Second)
 	for {
 		select {
 		case <-ctx.Done():
-			py.logger.Warn("context cancelled, stopping stats thread")
+			kobra.logger.Warn("context cancelled, stopping stats thread")
 			return
 		case <-ticker.C:
-			dagResponse, err := py.kobrad.GetBlockDAGInfo()
+			dagResponse, err := kobra.kobrad.GetBlockDAGInfo()
 			if err != nil {
-				py.logger.Warn("failed to get network hashrate from kobrad, prom stats will be out of date", zap.Error(err))
+				kobra.logger.Warn("failed to get network hashrate from kobrad, prom stats will be out of date", zap.Error(err))
 				continue
 			}
-			response, err := py.kobrad.EstimateNetworkHashesPerSecond(dagResponse.TipHashes[0], 1000)
+			response, err := kobra.kobrad.EstimateNetworkHashesPerSecond(dagResponse.TipHashes[0], 1000)
 			if err != nil {
-				py.logger.Warn("failed to get network hashrate from kobrad, prom stats will be out of date", zap.Error(err))
+				kobra.logger.Warn("failed to get network hashrate from kobrad, prom stats will be out of date", zap.Error(err))
 				continue
 			}
 			RecordNetworkStats(response.NetworkHashesPerSecond, dagResponse.BlockCount, dagResponse.Difficulty)
@@ -64,16 +64,16 @@ func (py *KobraApi) startStatsThread(ctx context.Context) {
 	}
 }
 
-func (py *KobraApi) reconnect() error {
-	if py.kobrad != nil {
-		return py.kobrad.Reconnect()
+func (kobra *KobraApi) reconnect() error {
+	if kobra.kobrad != nil {
+		return kobra.kobrad.Reconnect()
 	}
 
-	client, err := rpcclient.NewRPCClient(py.address)
+	client, err := rpcclient.NewRPCClient(kobra.address)
 	if err != nil {
 		return err
 	}
-	py.kobrad = client
+	kobra.kobrad = client
 	return nil
 }
 
@@ -129,9 +129,9 @@ func (s *KobraApi) startBlockTemplateListener(ctx context.Context, blockReadyCb 
 	}
 }
 
-func (py *KobraApi) GetBlockTemplate(
+func (kobra *KobraApi) GetBlockTemplate(
 	client *gostratum.StratumContext) (*appmessage.GetBlockTemplateResponseMessage, error) {
-	template, err := py.kobrad.GetBlockTemplate(client.WalletAddr,
+	template, err := kobra.kobrad.GetBlockTemplate(client.WalletAddr,
 		fmt.Sprintf(`'%s' via kobradag/kobrad-stratum-bridge_%s`, client.RemoteApp, version))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed fetching new block template from kobrad")
