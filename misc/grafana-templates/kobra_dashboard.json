@@ -82,7 +82,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "count(sum(last_over_time(py_valid_share_counter{wallet=~\"${wallet_filter}\"}[1m]) - last_over_time(py_valid_share_counter{wallet=~\"${wallet_filter}\"}[1m] offset 10m)) by (worker) > 0)",
+          "expr": "count(sum(last_over_time(kobra_valid_share_counter{wallet=~\"${wallet_filter}\"}[1m]) - last_over_time(kobra_valid_share_counter{wallet=~\"${wallet_filter}\"}[1m] offset 10m)) by (worker) > 0)",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -148,7 +148,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "SUM(rate(py_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[1m]))  * 1e9",
+          "expr": "SUM(rate(kobra_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[1m]))  * 1e9",
           "hide": false,
           "interval": "",
           "legendFormat": "1m",
@@ -162,7 +162,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "SUM(rate(py_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[1h])) * 1e9",
+          "expr": "SUM(rate(kobra_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[1h])) * 1e9",
           "hide": false,
           "instant": false,
           "legendFormat": "1h",
@@ -175,7 +175,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "SUM(rate(py_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[1d])) * 1e9",
+          "expr": "SUM(rate(kobra_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[1d])) * 1e9",
           "hide": false,
           "legendFormat": "1d",
           "range": true,
@@ -256,9 +256,9 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "increase(py_balance_by_wallet_gauge{wallet=~\"${wallet_filter}\"}[${resolution}]) *  ${show_balances}",
+          "expr": "increase(kobra_balance_by_wallet_gauge{wallet=~\"${wallet_filter}\"}[${resolution}]) *  ${show_balances}",
           "instant": false,
-          "legendFormat": "PYI",
+          "legendFormat": "KOBRA",
           "range": true,
           "refId": "A"
         }
@@ -324,8 +324,8 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "SUM (py_balance_by_wallet_gauge{wallet=~\"${wallet_filter}\"}) * ${show_balances}",
-          "legendFormat": "PYI",
+          "expr": "SUM (kobra_balance_by_wallet_gauge{wallet=~\"${wallet_filter}\"}) * ${show_balances}",
+            "legendFormat": "KOBRA",
           "range": true,
           "refId": "A"
         }
@@ -393,7 +393,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "SUM(increase(py_blocpy_mined{wallet=~\"${wallet_filter}\"}[${resolution}]))",
+          "expr": "SUM(increase(kobra_blockobra_mined{wallet=~\"${wallet_filter}\"}[${resolution}]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -460,7 +460,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "time() - max_over_time(timestamp(sum(changes(py_blocpy_mined{wallet=~\"${wallet_filter}\"}[5m]) > 0))[1d:1m]) + 300",
+          "expr": "time() - max_over_time(timestamp(sum(changes(kobra_blockobra_mined{wallet=~\"${wallet_filter}\"}[5m]) > 0))[1d:1m]) + 300",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -528,7 +528,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "(sum(py_estimated_network_hashrate_gauge) / (sum(rate(py_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[${resolution}])) * 1e9)) / 60",
+          "expr": "(sum(kobra_estimated_network_hashrate_gauge) / (sum(rate(kobra_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[${resolution}])) * 1e9)) / 60",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -596,7 +596,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "py_estimated_network_hashrate_gauge",
+          "expr": "kobra_estimated_network_hashrate_gauge",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -665,7 +665,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": " avg(py_network_difficulty_gauge) / 1000000000000",
+          "expr": " avg(kobra_network_difficulty_gauge) / 1000000000000",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -728,7 +728,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "MAX(py_network_block_count)",
+          "expr": "MAX(kobra_network_block_count)",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -908,7 +908,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "${resolution_s} * 1e9 * sum(rate(py_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[${resolution}])) / avg(py_estimated_network_hashrate_gauge)",
+          "expr": "${resolution_s} * 1e9 * sum(rate(kobra_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[${resolution}])) / avg(kobra_estimated_network_hashrate_gauge)",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -923,7 +923,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(increase(py_blocpy_mined{wallet=~\"${wallet_filter}\"}[${resolution}]))",
+          "expr": "sum(increase(kobra_blockobra_mined{wallet=~\"${wallet_filter}\"}[${resolution}]))",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -938,7 +938,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(py_blocpy_mined{wallet=~\"${wallet_filter}\"} - py_blocpy_mined{wallet=~\"${wallet_filter}\"} offset $__interval > 0) by (worker)",
+          "expr": "sum(kobra_blockobra_mined{wallet=~\"${wallet_filter}\"} - kobra_blockobra_mined{wallet=~\"${wallet_filter}\"} offset $__interval > 0) by (worker)",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -1010,7 +1010,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "sum(increase(py_blocpy_mined{wallet=~\"${wallet_filter}\"}[$resolution])) by (worker)",
+          "expr": "sum(increase(kobra_blockobra_mined{wallet=~\"${wallet_filter}\"}[$resolution])) by (worker)",
           "legendFormat": "{{worker}}",
           "range": true,
           "refId": "A"
@@ -1077,7 +1077,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "sum(increase(py_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[$resolution])) by (worker)",
+          "expr": "sum(increase(kobra_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[$resolution])) by (worker)",
           "legendFormat": "{{worker}}",
           "range": true,
           "refId": "A"
@@ -1198,7 +1198,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "SUM(rate(py_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[$resolution]))",
+          "expr": "SUM(rate(kobra_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[$resolution]))",
           "hide": false,
           "legendFormat": "Total",
           "range": true,
@@ -1210,7 +1210,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "sum(rate(py_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[$resolution])) by (worker)",
+          "expr": "sum(rate(kobra_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[$resolution])) by (worker)",
           "hide": false,
           "legendFormat": "{{worker}}",
           "range": true,
@@ -1309,7 +1309,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "sum(rate(py_valid_share_counter{wallet=~\"${wallet_filter}\"}[$resolution]) * 60) by (worker)",
+          "expr": "sum(rate(kobra_valid_share_counter{wallet=~\"${wallet_filter}\"}[$resolution]) * 60) by (worker)",
           "legendFormat": "{{worker}}",
           "range": true,
           "refId": "A"
@@ -1409,7 +1409,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "SUM BY (miner) (rate(py_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[$resolution]))",
+          "expr": "SUM BY (miner) (rate(kobra_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[$resolution]))",
           "legendFormat": "{{miner}}",
           "range": true,
           "refId": "A"
@@ -1548,7 +1548,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "SUM BY(worker, type) (rate(py_invalid_share_counter{wallet=~\"${wallet_filter}\"}[${resolution}]))",
+          "expr": "SUM BY(worker, type) (rate(kobra_invalid_share_counter{wallet=~\"${wallet_filter}\"}[${resolution}]))",
           "hide": false,
           "legendFormat": "{{worker}} : {{type}}",
           "range": true,
@@ -1560,7 +1560,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "increase(py_invalid_share_counter{wallet=~\"${wallet_filter}\"}[$__interval])",
+          "expr": "increase(kobra_invalid_share_counter{wallet=~\"${wallet_filter}\"}[$__interval])",
           "hide": false,
           "legendFormat": "{{worker}} : {{type}}",
           "range": true,
@@ -1667,7 +1667,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "py_estimated_network_hashrate_gauge",
+          "expr": "kobra_estimated_network_hashrate_gauge",
           "legendFormat": "hashrate",
           "range": true,
           "refId": "A"
@@ -1678,7 +1678,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "py_network_difficulty_gauge / 1e12",
+          "expr": "kobra_network_difficulty_gauge / 1e12",
           "hide": false,
           "legendFormat": "difficulty",
           "range": true,
@@ -1763,7 +1763,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "AVG BY(wallet) (py_balance_by_wallet_gauge{wallet=~\"${wallet_filter}\"}) *  ${show_balances}",
+          "expr": "AVG BY(wallet) (kobra_balance_by_wallet_gauge{wallet=~\"${wallet_filter}\"}) *  ${show_balances}",
           "legendFormat": "{{wallet}}",
           "range": true,
           "refId": "A"
@@ -1856,7 +1856,7 @@
             "uid": "wFbInMnVk"
           },
           "editorMode": "code",
-          "expr": "SUM(delta(py_network_block_count[1m])) / 60",
+          "expr": "SUM(delta(kobra_network_block_count[1m])) / 60",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1948,7 +1948,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "(sum(py_estimated_network_hashrate_gauge) / (sum(rate(py_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[${resolution}])) * 1e9))",
+          "expr": "(sum(kobra_estimated_network_hashrate_gauge) / (sum(rate(kobra_valid_share_diff_counter{wallet=~\"${wallet_filter}\"}[${resolution}])) * 1e9))",
           "instant": false,
           "legendFormat": "Estimate",
           "range": true,
@@ -2101,14 +2101,14 @@
           "type": "prometheus",
           "uid": "wFbInMnVk"
         },
-        "definition": "label_values(py_balance_by_wallet_gauge, wallet)",
+        "definition": "label_values(kobra_balance_by_wallet_gauge, wallet)",
         "hide": 0,
         "includeAll": true,
         "multi": false,
         "name": "wallet_filter",
         "options": [],
         "query": {
-          "query": "label_values(py_balance_by_wallet_gauge, wallet)",
+          "query": "label_values(kobra_balance_by_wallet_gauge, wallet)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
