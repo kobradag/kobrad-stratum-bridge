@@ -29,7 +29,7 @@ type kobradDiff struct {
 	targetValue *big.Int // previously know as fixedDifficultyBI
 }
 
-func newPyrinDiff() *kobradDiff {
+func newKobraDiff() *kobradDiff {
 	return &kobradDiff{}
 }
 
