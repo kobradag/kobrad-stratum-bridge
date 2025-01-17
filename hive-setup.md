@@ -14,25 +14,21 @@ This will load the contents of the file in your clipboard. Now go to hive, creat
 
 
 Once the import happens you'll be presented with a flightsheet filled with angry little red boxes like below.
-![image](https://github.com/Pyrinpyi/pyipad-stratum-bridge/assets/138370658/acd36eb5-eb2e-450d-81a8-b4e25fde005a)
 
 
 
  Set the coin & wallet for both miners in the flight sheet, and choose 'Configure in miner' for the pool. Strangly you cannot edit the miner configs until you touch the pool config, so re-set it to 'Configure in miner' if the UI is being weird. 
  
 At this point the flight sheet should be happy:
-![image](https://github.com/Pyrinpyi/pyipad-stratum-bridge/assets/138370658/e9019889-dfb0-4378-91e0-513832896c65)
 
 
 Last step, you just need to edit the custom miner section with the address of the kobrad node you're mining to. This needs the full ip/port so it'll look similar to `192.168.0.12:19110` save the changes after you're finished
-![image](https://github.com/Pyrinpyi/pyipad-stratum-bridge/assets/138370658/28c62e9e-47ed-418c-9558-dad54d417688)
 
 
 
 You should be good to create the flight sheet now. However, you should verify the configurations in both miners before you run it. Never run something blindly off the internet :)
 
 This is what the configuration generally should look like
-![image](https://github.com/Pyrinpyi/pyipad-stratum-bridge/assets/138370658/60092d7f-17c3-4ccb-b986-5c37e64249d5)
 
 
 
