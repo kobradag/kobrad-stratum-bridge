@@ -8,7 +8,7 @@
             "miner": "srbminer",
             "miner_config": {
                 "url": "127.0.0.1:5555",
-                "algo": "kobradhash",
+                "algo": "KODA",
                 "worker": "%WORKER_NAME%",
                 "user_config": "--disable-cpu"
             },
@@ -19,12 +19,12 @@
             "pool_ssl": false,
             "dpool_ssl": false,
             "miner": "custom",
-            "miner_alt": "py_bridge",
+            "miner_alt": "kobra_bridge",
             "miner_config": {
-                "url": "YOUR_PYIPAD_NODE_IP_HERE:44448",
-                "miner": "py_bridge",
+                "url": "YOUR_KOBRAD_NODE_IP_HERE:44448",
+                "miner": "kobra_bridge",
                 "template": "doesnt.matter",
-                "install_url": "https://github.com/kobradag/kobrad-stratum-bridge/releases/download/v1.0.4/kobrad_bridge-1.0.0_hive.tar.gz"
+                "install_url": "https://github.com/kobradag/kobrad-stratum-bridge/releases/download/"
             },
             "pool_geo": []
         }
