@@ -126,7 +126,7 @@ func (c *clientListener) NewBlockAvailable(kapi *KobraApi) {
 				state.initialized = true
 				state.useBigJob = bigJobRegex.MatchString(client.RemoteApp)
 				// first pass through send the difficulty since it's fixed
-				state.stratumDiff = newPyrinDiff()
+				state.stratumDiff = newKobraDiff()
 				state.stratumDiff.setDiffValue(c.minShareDiff)
 				if err := client.Send(gostratum.JsonRpcEvent{
 					Version: "2.0",
@@ -175,7 +175,7 @@ func (c *clientListener) NewBlockAvailable(kapi *KobraApi) {
 		c.lastBalanceCheck = time.Now()
 		if len(addresses) > 0 {
 			go func() {
-				balances, err := kapi.kobrad.GetBalancesByAddresses(addresses)
+				balances, err := kobraapi.kobrad.GetBalancesByAddresses(addresses)
 				if err != nil {
 					c.logger.Warn("failed to get balances from kobrad, prom stats will be out of date", zap.Error(err))
 					return
