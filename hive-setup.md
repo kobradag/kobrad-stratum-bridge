@@ -7,7 +7,6 @@ This assumes that you will be running the ks_bridge on the mining computer. I've
 I'll be using srb here, so I'm focusing on the file [here](misc/hive-templates/pyi_srb_local_adapter.json). Hive gives the option to import from a file or from your clipboard; I'll be copying directly from the clipboard in this example. 
 
 Navigate to the template that you want and hit the 'copy file contents' button
-![image](https://github.com/Pyrinpyi/pyipad-stratum-bridge/assets/138370658/a72add34-0629-42dd-a3fc-4ff10cc7c89b)
 
 
 This will load the contents of the file in your clipboard. Now go to hive, create a new flight sheet, and click the import from clipboard button
@@ -22,7 +21,7 @@ Once the import happens you'll be presented with a flightsheet filled with angry
 At this point the flight sheet should be happy:
 
 
-Last step, you just need to edit the custom miner section with the address of the kobrad node you're mining to. This needs the full ip/port so it'll look similar to `192.168.0.12:19110` save the changes after you're finished
+Last step, you just need to edit the custom miner section with the address of the kobrad node you're mining to. This needs the full ip/port so it'll look similar to `192.168.0.12:44448` save the changes after you're finished
 
 
 
@@ -45,7 +44,6 @@ Ideally you'd run the bridge on the same machine that your pyipad node is runnin
 
 Once the bridge is running, miners can be configured simply by replacing the pool URL with the ip:port of the bridge. In the example below the bridge is running on `192.168.0.25:5555`
 
-![image](https://github.com/Pyrinpyi/pyipad-stratum-bridge/assets/138370658/6756d318-76a2-4eec-b784-15db3dc6d02a)
 
 
 
