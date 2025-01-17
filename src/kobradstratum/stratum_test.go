@@ -62,7 +62,7 @@ func TestHeaderSerialization(t *testing.T) {
 func TestPoolHzCalculation(t *testing.T) {
 	// TODO: figure out what we really want to test here.
 	// currently set up diff object to mimic old static settings
-	diff := newPyrinDiff()
+	diff := newKobraDiff()
 	diff.setDiffValue(4)
 	log.Println(diff.hashValue)
 	log.Println(diff.diffValue)
