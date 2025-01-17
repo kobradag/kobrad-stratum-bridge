@@ -31,7 +31,7 @@ Youll see output about downloading images and such and eventually see output lik
 
 At this point everything is running successfully in the background. 
 
-- py_bridge is running on port :5555
+- kobra_bridge is running on port :7777
 - prometheus is running on port :9090
 - grafana is running on port :3000
 
