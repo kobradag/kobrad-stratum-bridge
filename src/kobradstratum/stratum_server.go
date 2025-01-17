@@ -63,7 +63,7 @@ func ListenAndServe(cfg BridgeConfig) error {
 	if blockWaitTime < minBlockWaitTime {
 		blockWaitTime = minBlockWaitTime
 	}
-	pyApi, err := NewKobraAPI(cfg.RPCServer, blockWaitTime, logger)
+	kobraApi, err := NewKobraAPI(cfg.RPCServer, blockWaitTime, logger)
 	if err != nil {
 		return err
 	}
@@ -76,7 +76,7 @@ func ListenAndServe(cfg BridgeConfig) error {
 		go http.ListenAndServe(cfg.HealthCheckPort, nil)
 	}
 
-	shareHandler := newShareHandler(pyApi.kobrad)
+	shareHandler := newShareHandler(kobraApi.kobrad)
 	minDiff := cfg.MinShareDiff
 	if minDiff < 1 {
 		minDiff = 1
@@ -106,8 +106,8 @@ func ListenAndServe(cfg BridgeConfig) error {
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	pyApi.Start(ctx, func() {
-		clientHandler.NewBlockAvailable(pyApi)
+	kobraApi.Start(ctx, func() {
+		clientHandler.NewBlockAvailable(kobraApi)
 	})
 
 	if cfg.PrintStats {
