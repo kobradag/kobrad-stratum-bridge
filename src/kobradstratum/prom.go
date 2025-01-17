@@ -33,12 +33,12 @@ var invalidCounter = promauto.NewCounterVec(prometheus.CounterOpts{
 }, append(workerLabels, "type"))
 
 var blockCounter = promauto.NewCounterVec(prometheus.CounterOpts{
-	Name: "kobra_blocpy_mined",
+	Name: "kobra_blockobra_mined",
 	Help: "Number of blocks mined over time",
 }, workerLabels)
 
 var blockGauge = promauto.NewGaugeVec(prometheus.GaugeOpts{
-	Name: "kobra_mined_blocpy_gauge",
+	Name: "kobra_mined_blockobra_gauge",
 	Help: "Gauge containing 1 unique instance per block mined",
 }, append(workerLabels, "nonce", "bluescore", "hash"))
 
